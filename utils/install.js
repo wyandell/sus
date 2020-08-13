@@ -27,10 +27,12 @@ const warn = (...args) => {
 const err = (...args) => {
     log(chalk.red('[err]'), ...args)
 }
+/*
 if (process.platform !== 'linux') {
     log(chalk.red('[ERROR]'), 'Your current platform', chalk.yellow(process.platform), 'is not supported by this install script. Sorry!');
     // process.exit(1);
 }
+*/
 
 // First, check if cookies file exists
 if (!fs.existsSync(path.join(__dirname, '../cookies.txt'))) {

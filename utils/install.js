@@ -166,11 +166,11 @@ const setupConfig = () => {
                     port = newPort;
                 }
             }
-            r.avatarRender.address = add + ':' + port;
-            r.avatarRender.authorization = auth;
+            r.address = add + ':' + port;
+            r.authorization = auth;
 
             let rulesToAdd = rl('Please type out any rules, seperated by a comma.\nSee here for more info: https://github.com/Pokemonjpups/2012-roblox/tree/master/docs/avatar-render/rules.md').split(',');
-            r.avatarRender.rules = rulesToAdd;
+            r.rules = rulesToAdd;
 
             info('Writing config to disk...')
             fs.writeFileSync(confDir, JSON.stringify(conf));

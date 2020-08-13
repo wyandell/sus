@@ -193,6 +193,13 @@ const setupConfig = () => {
                     err('Exiting due to config conflict with avatar-render-node.');
                     process.exit(1);
                 }
+            } else {
+                fs.writeFileSync(renderPath, JSON.stringify({
+                    port: port,
+                    authorization: auth,
+                }));
+                info('Avatar render config file created.');
+                installModules();
             }
         } else {
             // Dont enable render setup

@@ -12,6 +12,9 @@ defaultAlertViewModel.IsVisible = false;
 
 import WwwService from '../services/www';
 const WWW = new WwwService();
+WWW.getAlertInfo().then(d => {
+    defaultAlertViewModel = d;
+})
 setInterval(async () => {
     defaultAlertViewModel = await WWW.getAlertInfo();
 }, 60 * 1000);

@@ -7,7 +7,7 @@ export class ThumbnailController extends base {
 
     @Get('/User.ashx')
     @Summary('Redirect to the user thumbnail')
-    public redirectToUserThumbnail(
+    public async redirectToUserThumbnail(
         @Res() res: Res,
         @Req() req: Req,
     ) {
@@ -23,7 +23,9 @@ export class ThumbnailController extends base {
         if (id === 1) {
             return res.redirect('/img/Roblox.png');
         }
-        return res.redirect('https://www.roblox.com/Thumbs/Avatar.ashx?x=420&y=420&userid=' + id);
+        let results = await this.AvatarRender.getUserThumbnailUrl(id);
+        res.redirect(302, results);
+        // return res.redirect('https://www.roblox.com/Thumbs/Avatar.ashx?x=420&y=420&userid=' + id);
     }
 
     @Get('/Group.ashx')

@@ -211,18 +211,21 @@ const setupConfig = () => {
     });
 
     const installModules = () => {
-        let escapeShell = (cmd) => {
-            return '"' + cmd.replace(/(["\s'$`\\])/g, '\\$1') + '"';
-        };
-        let renderPath = escapeShell(path.join(__dirname, '../avatar-render-node/'));
-        let wwwPath = escapeShell(path.join(__dirname, '../www/'));
+        let renderPath = path.join(__dirname, '../avatar-render-node/');
+        let wwwPath = path.join(__dirname, '../www/');
 
         let ss = 0;
         const startBuild = () => {
             info('Complete.\n\nTo run the program, enter this command:\n' + chalk.bold(`node ./utils/start.js`));
             process.exit(0);
         }
-        cp.exec(`cd ${renderPath}; npm i; npm run build`, (e, out, stdErr) => {
+        let join = '; ';
+        if (process.platform === 'win32') {
+            join = '&& ';
+        }
+        cp.exec(`npm i ${join} npm run build`, {
+            cwd: renderPath,
+        }, (e, out, stdErr) => {
             if (e) {
                 err(e);
             } else {
@@ -237,7 +240,9 @@ const setupConfig = () => {
                 }
             }
         });
-        cp.exec(`cd ${wwwPath}; npm i; npm run build`, (e, out, stdErr) => {
+        cp.exec(`npm i ${join} npm run build`, {
+            cwd: wwwPath,
+        }, (e, out, stdErr) => {
             if (e) {
                 err(e);
             } else {

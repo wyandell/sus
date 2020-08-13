@@ -51,7 +51,7 @@ These are features that some people would love this project to have, however, th
 
 ### Automatic (Ubuntu only)
 1. Install Node (preferebly the latest LTS version - currently v14)
-2. Run "node ./install"
+2. Run "node ./utils/install.js"
 
 ### Manual
 1. Install node, install redis, clone this repo, cd into "www" and run `npm install`.

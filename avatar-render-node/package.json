@@ -1,0 +1,19 @@
+{
+    "name": "avatar-render",
+    "version": "1.0.0",
+    "description": "Avatar render service based off roblox web endpoints",
+    "main": "index.js",
+    "scripts": {
+        "start:dev": "nodemon -r --ignore --exec ts-node-dev src/index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "GPL-3.0",
+    "dependencies": {
+        "@types/ws": "^7.2.6",
+        "nodemon": "^2.0.4",
+        "ts-httpexceptions": "^4.1.0",
+        "ts-node-dev": "^1.0.0-pre.56",
+        "ws": "^7.3.1"
+    }
+}

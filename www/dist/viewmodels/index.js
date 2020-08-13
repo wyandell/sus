@@ -19,6 +19,9 @@ defaultAlertViewModel.Text = '';
 defaultAlertViewModel.IsVisible = false;
 const www_1 = require("../services/www");
 const WWW = new www_1.default();
+WWW.getAlertInfo().then(d => {
+    defaultAlertViewModel = d;
+});
 setInterval(() => __awaiter(void 0, void 0, void 0, function* () {
     defaultAlertViewModel = yield WWW.getAlertInfo();
 }), 60 * 1000);

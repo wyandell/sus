@@ -358,9 +358,6 @@ loadMiscProfileInfo();
 
 const loadPresenceInfo = () => {
     let userPresenceDiv = $('#user-presence');
-    let offlineContent = `<span  class="UserOfflineMessage">[ Offline ]</span>`;
-    let onlineContent = `<span class="UserOnlineMessage">[ Online ]</span>`;
-    let playingContent = `<span class="UserOnlineMessage" style="color:green;">[ Playing ]</span>`;
 
     let presenceIdsArr = [];
     presenceIdsArr.push(userId);
@@ -375,9 +372,17 @@ const loadPresenceInfo = () => {
             if (pres.userId === userId) {
                 console.log('found current user');
                 if (pres.userPresenceType === 0) {
-                    userPresenceDiv.append(offlineContent);
-                } else {
-                    userPresenceDiv.append(onlineContent);
+                    userPresenceDiv.append(`<span  class="UserOfflineMessage">[ Offline ]</span>`);
+                } else if (pres.userPresenceType === 1) {
+                    userPresenceDiv.append(`<span class="UserOnlineMessage">[ Online - Website ]</span>`);
+                } else if (pres.userPresenceType === 2) {
+                    let name = pres.lastLocation;
+                    if (name) {
+                        let pl = pres.placeId;
+                        userPresenceDiv.append(`<a href="/Game.aspx?ID=${pl}"><span class="UserOnlineMessage" style="color:green;">[ Playing ${name} ]</span></a>`);
+                    } else {
+                        userPresenceDiv.append(`<span class="UserOnlineMessage" style="color:green;">[ Playing ]</span>`);
+                    }
                 }
             } else {
                 let friend = $('.OnlineStatus[data-user-id="' + pres.userId + '"]');

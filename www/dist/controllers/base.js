@@ -19,6 +19,7 @@ const AccountSettings_1 = require("../services/AccountSettings");
 const AccountInformation_1 = require("../services/AccountInformation");
 const BuildersClub_1 = require("../services/BuildersClub");
 const Presence_1 = require("../services/Presence");
+const AvatarRender_1 = require("../services/AvatarRender");
 class base extends HTTPExceptions_1.default {
     constructor(extraData) {
         super();
@@ -40,6 +41,7 @@ class base extends HTTPExceptions_1.default {
         this.AccountInformation = new AccountInformation_1.default(extraData);
         this.BuildersClub = new BuildersClub_1.default(extraData);
         this.Presence = new Presence_1.default(extraData);
+        this.AvatarRender = new AvatarRender_1.default(extraData);
     }
 }
 exports.default = base;

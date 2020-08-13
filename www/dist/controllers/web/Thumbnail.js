@@ -27,19 +27,23 @@ const swagger_1 = require("@tsed/swagger");
 const base_1 = require("../base");
 let ThumbnailController = class ThumbnailController extends base_1.default {
     redirectToUserThumbnail(res, req) {
-        // could this be any uglier?
-        let idStr = req.query['id'] || req.query['userId'] || req.query['userid'] || req.query['UserID'] || req.query['USERID'] || req.query['ID'] || req.query['Id'];
-        if (!idStr || typeof idStr !== 'string') {
-            throw new this.BadRequest('NoIdSpecified');
-        }
-        let id = parseInt(idStr, 10);
-        if (!Number.isInteger(id)) {
-            throw new Error('InvalidId');
-        }
-        if (id === 1) {
-            return res.redirect('/img/Roblox.png');
-        }
-        return res.redirect('https://www.roblox.com/Thumbs/Avatar.ashx?x=420&y=420&userid=' + id);
+        return __awaiter(this, void 0, void 0, function* () {
+            // could this be any uglier?
+            let idStr = req.query['id'] || req.query['userId'] || req.query['userid'] || req.query['UserID'] || req.query['USERID'] || req.query['ID'] || req.query['Id'];
+            if (!idStr || typeof idStr !== 'string') {
+                throw new this.BadRequest('NoIdSpecified');
+            }
+            let id = parseInt(idStr, 10);
+            if (!Number.isInteger(id)) {
+                throw new Error('InvalidId');
+            }
+            if (id === 1) {
+                return res.redirect('/img/Roblox.png');
+            }
+            let results = yield this.AvatarRender.getUserThumbnailUrl(id);
+            res.redirect(302, results);
+            // return res.redirect('https://www.roblox.com/Thumbs/Avatar.ashx?x=420&y=420&userid=' + id);
+        });
     }
     redirectToGroupThumbnail(res, req) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -66,7 +70,7 @@ __decorate([
     __param(1, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ThumbnailController.prototype, "redirectToUserThumbnail", null);
 __decorate([
     common_1.Get('/Group.ashx'),

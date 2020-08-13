@@ -7,15 +7,12 @@ const net = require('net');
 let nmPath = path.join(__dirname, './node_modules/');
 if (!fs.existsSync(nmPath)) {
     console.log('[info] installing dependencies...')
-    let out = cp.execSync('npm install');
+    let out = cp.execSync('npm install', {
+        cwd: __dirname,
+    });
     console.log('[info] Please enter the command again. Sorry!');
     process.exit(15);
 }
-
-
-
-
-
 
 const chalk = require('chalk');
 const redis = require('ioredis');

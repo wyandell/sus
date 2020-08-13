@@ -1,9 +1,23 @@
 const cp = require('child_process');
-const chalk = require('chalk');
 const crypto = require('crypto');
 const path = require('path');
 const fs = require('fs');
 const net = require('net');
+
+let nmPath = path.join(__dirname, './node_modules/');
+if (!fs.existsSync(nmPath)) {
+    console.log('[info] installing dependencies...')
+    let out = cp.execSync('npm install');
+    console.log('[info] Please enter the command again. Sorry!');
+    process.exit(15);
+}
+
+
+
+
+
+
+const chalk = require('chalk');
 const redis = require('ioredis');
 const rl = require('prompt-sync')()
 const log = console.log;

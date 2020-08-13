@@ -41,7 +41,7 @@ if (!fs.existsSync(path.join(__dirname, '../cookies.txt'))) {
 }
 
 let wwwDir = path.join(__dirname, '../www/');
-let confDir = path.join(wwwDir, './config25.json');
+let confDir = path.join(wwwDir, './config.json');
 
 const setupConfig = () => {
     info('Creating random keys...');

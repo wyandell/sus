@@ -4,13 +4,17 @@
     "description": "Avatar render service based off roblox web endpoints",
     "main": "index.js",
     "scripts": {
-        "start:dev": "nodemon -r --ignore --exec ts-node-dev src/index.ts"
+        "start:dev": "nodemon -r --ignore --exec ts-node-dev src/index.ts",
+        "build": "tsc --build tsconfig.json",
+        "start": "cross-env ENV_FILE=production node ./dist/index.js"
     },
     "keywords": [],
     "author": "",
     "license": "GPL-3.0",
     "dependencies": {
         "@types/ws": "^7.2.6",
+        "cross-env": "^7.0.2",
+        "node-powershell": "^4.0.0",
         "nodemon": "^2.0.4",
         "ts-httpexceptions": "^4.1.0",
         "ts-node-dev": "^1.0.0-pre.56",

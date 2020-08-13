@@ -48,6 +48,12 @@ These are features that some people would love this project to have, however, th
 - Parent accounts (Although likely not impossible, I don't want to bother with this)
 
 ## Get Started
+
+### Automatic (Ubuntu only)
+1. Install Node (preferebly the latest LTS version - currently v14)
+2. Run "node ./install"
+
+### Manual
 1. Install node, install redis, clone this repo, cd into "www" and run `npm install`.
 
 2. Next, create a file called "cookies.txt" in the root directory of the repo with at least one ".ROBLOSECURITY" cookie (with each cookie seperated by `\n` or `\r\n`).

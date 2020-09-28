@@ -418,4 +418,25 @@ export class DefaultController extends base {
         }
         return v;
     }
+
+    @Get('/Friends.aspx')
+    @Summary('User friends page')
+    @Render('pages/friends.ejs')
+    @Use(middleware.Auth.AuthenticateRequest)
+    public async friends(
+        @Req() req: Req,
+    ) {
+        let userId = parseInt(req.query[Object.getOwnPropertyNames(req.query)[0]] as string, 10);
+        if (!Number.isInteger(userId)) {
+            throw new this.BadRequest('InvalidUserId');
+        }
+        let userInfo = await this.Users.getUserInfo(userId);
+        let bc = await this.BuildersClub.getType(userId);
+        return new vm.Default({
+            bcType: bc,
+            userInfo,
+        }, {
+            title: `ROBLOX - ${userInfo.name}'s Friends`,
+        })
+    }
 }

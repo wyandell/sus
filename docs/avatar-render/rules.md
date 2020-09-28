@@ -5,10 +5,13 @@ Avatar render rules are codes used to limit the types of avatars that can be gen
 
 ### Rules List
 - **2012AndBelow** <sup>NotImplemented</sub>
+
     This rule prevents assets created after 2012 (December 31st, 2012) from showing up on user avatar renders.
 
-- **NoRthro** - <sup>NotImplemented</sub>
+- **NoRthro** <sup>NotImplemented</sub>
+
     RThro bundles, assets, etc, are banned frome renders.
 
-- **NoPackages** - <sup>NotImplemented</sub>
+- **NoPackages** <sup>NotImplemented</sub>
+
     All packages (Man, Woman, Rthro, etc) will be removed from renders.

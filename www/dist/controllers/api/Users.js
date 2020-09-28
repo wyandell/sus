@@ -23,6 +23,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@tsed/common");
+const swagger_1 = require("@tsed/swagger");
+const _ = require("lodash");
 const base_1 = require("../base");
 let UsersController = class UsersController extends base_1.default {
     scrapeProfileInfo(userId) {
@@ -30,6 +32,22 @@ let UsersController = class UsersController extends base_1.default {
             const profile = yield this.Users.getUserProfileHtml(userId);
             let data = this.Users.processUserProfileHtml(profile);
             return data;
+        });
+    }
+    getFriends(userId, mode) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.Friends.getFriends(userId).then(val => {
+                if (mode === 'profile') {
+                    return {
+                        total: val.length,
+                        data: _.chunk(_.chunk(val, 6), 4)
+                    };
+                }
+                return {
+                    total: val.length,
+                    data: val,
+                };
+            });
         });
     }
 };
@@ -40,6 +58,16 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "scrapeProfileInfo", null);
+__decorate([
+    common_1.Get('/:userId/friends'),
+    swagger_1.Summary('Get user friends'),
+    __param(0, common_1.Required()),
+    __param(0, common_1.PathParams('userId', Number)),
+    __param(1, common_1.QueryParams('mode', String)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, String]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "getFriends", null);
 UsersController = __decorate([
     common_1.Controller('/users')
 ], UsersController);

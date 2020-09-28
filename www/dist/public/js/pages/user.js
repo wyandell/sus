@@ -370,7 +370,6 @@ const loadPresenceInfo = () => {
         console.log(d);
         for (const pres of d) {
             if (pres.userId === userId) {
-                console.log('found current user');
                 if (pres.userPresenceType === 0) {
                     userPresenceDiv.append(`<span  class="UserOfflineMessage">[ Offline ]</span>`);
                 } else if (pres.userPresenceType === 1) {

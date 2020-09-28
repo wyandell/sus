@@ -354,6 +354,22 @@ let DefaultController = class DefaultController extends base_1.default {
             return v;
         });
     }
+    friends(req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let userId = parseInt(req.query[Object.getOwnPropertyNames(req.query)[0]], 10);
+            if (!Number.isInteger(userId)) {
+                throw new this.BadRequest('InvalidUserId');
+            }
+            let userInfo = yield this.Users.getUserInfo(userId);
+            let bc = yield this.BuildersClub.getType(userId);
+            return new vm.Default({
+                bcType: bc,
+                userInfo,
+            }, {
+                title: `ROBLOX - ${userInfo.name}'s Friends`,
+            });
+        });
+    }
 };
 __decorate([
     common_1.Get('/'),
@@ -481,6 +497,16 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], DefaultController.prototype, "profile", null);
+__decorate([
+    common_1.Get('/Friends.aspx'),
+    swagger_1.Summary('User friends page'),
+    common_1.Render('pages/friends.ejs'),
+    common_1.Use(middleware.Auth.AuthenticateRequest),
+    __param(0, common_1.Req()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], DefaultController.prototype, "friends", null);
 DefaultController = __decorate([
     common_1.Controller('/')
 ], DefaultController);

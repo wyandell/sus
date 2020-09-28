@@ -1,0 +1,40 @@
+<%- include('../header'); %>
+
+<!-- todo: find out if obc theme was applied to friends page by roblox in 2012(?) -->
+<% if (typeof bcType !== 'undefined' && bcType === 'OBC') { %>
+<link id="obc" rel="stylesheet" href="/CSS/Base/CSS/OBC.css" />
+<% } %>
+
+<div id="FriendsContainer" data-user-id="<%= page.userInfo.id %>">
+
+
+    <div style="margin: 12px 0 20px; overflow:visible">
+        <span class="StandardHeader2ndLvlText"
+            style="float: left;font-weight:bold;font-size:16px;"><%= page.userInfo.name %>'s Friends
+            (<span id="friend-count">0</span>)</span>
+
+    </div>
+    <div style="padding-top: 30px">
+        <div id="ctl00_cphRoblox_rbxFriendsPane_Pager1_PanelPages" style="text-align:center;">
+
+            Pages:
+
+            <a id="load-previous-friends-page" style="display:none;">
+                &lt;&lt; Previous</a>
+
+            <a id="load-next-friends-page">Next
+                &gt;&gt;</a>
+        </div>
+
+
+
+        <table id="user-friends-table" cellspacing="0" align="Center" border="0" style="border-collapse:collapse;">
+        </table>
+
+    </div>
+
+</div>
+
+<script src="/js/pages/friends.js"></script>
+
+<%- include('../footer'); %>

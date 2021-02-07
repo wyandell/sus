@@ -23,7 +23,16 @@ export class BuildersClubController extends base {
         @PathParams('userId', Number) userId: number,
         @Res() res: Res,
     ) {
-        const status = await this.BuildersClub.getType(userId);
+        let status;
+        try {
+            status = await this.BuildersClub.getType(userId);
+        } catch (e) {
+            if (e && e.isAxiosError && e.response && e.response.status === 429) {
+                res.redirect(302, '/img/empty.png');
+                return;
+            }
+            throw e;
+        }
         if (status === 'BC') {
             res.redirect(302, '/img/overlay_bcOnly.png');
         } else if (status === 'TBC') {

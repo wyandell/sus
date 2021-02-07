@@ -113,6 +113,7 @@ export default class CatalogService extends base {
 
     public async getAssetDetails(assetId: number): Promise<{
         genres: string[]
+        purchaseCount: number;
     }> {
         return this.batchGetItemDetails([
             {

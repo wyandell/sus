@@ -304,7 +304,7 @@ export class DefaultController extends base {
             chartsMin90,
             chartsMin180,
             updatedAtFormat: updatedAtFormat,
-            sales: productInfo.Sales,
+            sales: details.purchaseCount || productInfo.Sales,
             assetId: assetId,
             name: productInfo.Name,
             itemDescription: productInfo.Description,

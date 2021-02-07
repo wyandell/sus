@@ -11,7 +11,7 @@
     },
     "keywords": [],
     "author": "",
-    "license": "GPL-3.0",
+    "license": "MIT",
     "dependencies": {
         "@tsed/common": "5.61.1",
         "@tsed/core": "5.61.1",

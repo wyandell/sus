@@ -10,7 +10,7 @@
     },
     "keywords": [],
     "author": "",
-    "license": "GPL-3.0",
+    "license": "MIT",
     "dependencies": {
         "@types/ws": "^7.2.6",
         "cross-env": "^7.0.2",

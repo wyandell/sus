@@ -470,13 +470,12 @@
                             <a id="ctl00_cphRoblox_lstItemsForResale_ctrl0_AvatarImage2" title="<%= seller.username %>"
                                 href="http://www.roblox.com/User.aspx?ID=<%= seller.userId %>"
                                 style="display:inline-block;height:48px;width:48px;cursor:pointer;"><img
-                                    src="https://www.roblox.com/Thumbs/Avatar.ashx?x=420&y=420&userid=<%= seller.userId %>"
-                                    height="48" width="48" border="0"
-                                    onerror="return Roblox.Controls.Image.OnError(this)"
+                                    src="/Thumbnail/User.ashx?x=420&y=420&userid=<%= seller.userId %>" height="48"
+                                    width="48" border="0" onerror="return Roblox.Controls.Image.OnError(this)"
                                     alt="<%= seller.username %>" /><img src="/img/overlay_bc_small.png" align="left"
                                     style="position:relative;top:-12px;" /></a>
                             <br />
-                            <a href="http://www.roblox.com/user.aspx?id=<%= seller.userId %>">
+                            <a href="/User.aspx?ID=<%= seller.userId %>">
                                 <%= seller.username %>
                             </a>
                         </td>
